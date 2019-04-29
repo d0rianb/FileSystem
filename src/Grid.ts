@@ -27,6 +27,17 @@ export class Grid {
 		}
 	}
 
+	detectCell(e: MouseEvent): Cell {
+		let x = e.offsetX
+		let y = e.offsetY
+		return (this.cells as any).filter(cell => {
+			return x >= cell.x * this.cellWidth &&
+				x < (cell.x + 1) * this.cellWidth * cell.width &&
+				y >= cell.y * this.cellHeight &&
+				y < (cell.y + 1) * this.cellHeight * cell.height
+		})[0]
+	}
+
 	updateCell(newCell: Cell) {
 		if (!this.cells.includes(newCell)) return
 		if (newCell.width !== 1 || newCell.height !== 1) {

@@ -42,7 +42,7 @@ export class NavSystem {
 	mouseHover(e: MouseEvent) { }
 
 	mouseClick(e: MouseEvent): Cell {
-		const clickCell = this.detectCell(e)
+		const clickCell = this.grid.detectCell(e)
 		clickCell.toggleHighlight()
 		this.grid.updateCell(clickCell)
 		this.grid.focusCell = clickCell
@@ -51,17 +51,6 @@ export class NavSystem {
 
 	keyDown(e: KeyboardEvent) {
 		this.grid.handleKeyboardEvent(e)
-	}
-
-	detectCell(e: MouseEvent): Cell {
-		let x = e.offsetX
-		let y = e.offsetY
-		return (this.grid.cells as any).filter(cell => {
-			return x >= cell.x * this.cellWidth &&
-				x < (cell.x + 1) * this.cellWidth * cell.width &&
-				y >= cell.y * this.cellHeight &&
-				y < (cell.y + 1) * this.cellHeight * cell.height
-		})[0]
 	}
 
 	render() {

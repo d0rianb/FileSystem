@@ -6,5 +6,4 @@ export const color = {
 	highlight: '#255E9D',
 	highlightTransparent: '#255E9DCC',
 	bg: '#DDDDDD'
-
 }
